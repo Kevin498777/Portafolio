@@ -5,94 +5,111 @@
 
 <!-- Hero -->
 <section class="hero d-flex align-items-center" id="inicio">
-    <div class="container">
-        <div class="row align-items-center min-vh-100 pt-5">
-            <div class="col-lg-7">
-                <p class="text-primary mb-2 font-monospace">Hola, soy</p>
-                <h1 class="display-3 fw-bold text-white mb-2">Kevin Ibarra</h1>
-                <h2 class="h3 text-light mb-4 fw-light">
-                    Desarrollador <span class="text-primary">Backend</span> &
-                    <span class="text-primary">Automatización</span>
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-100 pt-5 g-5">
+
+            <!-- Texto -->
+            <div class="col-lg-7 order-2 order-lg-1">
+                <p class="hero-greeting mb-3">👋 Hola, soy</p>
+                <h1 class="hero-name mb-2">Kevin Brian Ibarra Pineda</h1>
+                <h2 class="hero-role mb-4">
+                    Desarrollador <span class="text-primary fw-semibold">Backend</span> &amp;
+                    <span class="text-primary fw-semibold">Automatización</span>
                 </h2>
-                <p class="text-muted fs-5 mb-4" style="max-width: 520px;">
+                <p class="hero-description mb-4">
                     Ingeniero en Sistemas especializado en Python y Django.
-                    Construyo herramientas que ahorran horas de trabajo manual.
+                    Construyo herramientas que convierten horas de trabajo manual en minutos.
                 </p>
-                <div class="d-flex gap-3 flex-wrap">
-                    <a href="{% url 'proyectos' %}" class="btn btn-primary btn-lg px-4 rounded-pill">
+                <div class="d-flex gap-3 flex-wrap mb-4">
+                    <a href="{% url 'proyectos' %}" class="btn btn-primary px-4 py-2 rounded-pill">
                         Ver proyectos <i class="bi bi-arrow-right ms-1"></i>
                     </a>
-                    <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                    <a href="{% url 'contacto' %}" class="btn btn-outline-light px-4 py-2 rounded-pill">
                         Contactar
                     </a>
                 </div>
-                <div class="d-flex gap-3 mt-4">
-                    <a href="https://github.com/TU_USUARIO" target="_blank" class="text-muted fs-4"><i class="bi bi-github"></i></a>
-                    <a href="mailto:kevinbrianip498@gmail.com" class="text-muted fs-4"><i class="bi bi-envelope"></i></a>
+                <div class="d-flex gap-3">
+                    <a href="https://github.com/TU_USUARIO" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
+                    <a href="mailto:kevinbrianip498@gmail.com" class="social-icon"><i class="bi bi-envelope"></i></a>
+                    <a href="tel:7671216926" class="social-icon"><i class="bi bi-telephone"></i></a>
                 </div>
             </div>
-            <div class="col-lg-5 text-center d-none d-lg-block">
-                <div class="hero-code p-4 rounded-3 text-start font-monospace">
+
+            <!-- Foto + código -->
+            <div class="col-lg-5 order-1 order-lg-2 text-center">
+                <!-- Foto circular -->
+                <div class="profile-photo-wrapper mb-4">
+                    <div class="profile-photo-placeholder">
+                        <i class="bi bi-person-fill"></i>
+                    </div>
+                    <!-- Cuando tengas tu foto, reemplaza el div de arriba por: -->
+                    <!-- <img src="{% static 'core/img/foto.jpg' %}" alt="Kevin Brian Ibarra Pineda" class="profile-photo"> -->
+                </div>
+                <!-- Bloque de código -->
+                <div class="hero-code p-4 text-start font-monospace d-none d-lg-block">
                     <span class="text-muted"># kevin_ibarra.py</span><br><br>
                     <span class="text-primary">class</span> <span class="text-warning">Developer</span>:<br>
-                    &nbsp;&nbsp;name = <span class="text-success">"Kevin Ibarra"</span><br>
-                    &nbsp;&nbsp;role = <span class="text-success">"Backend & Automation"</span><br>
-                    &nbsp;&nbsp;stack = [<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-success">"Python"</span>, <span class="text-success">"Django"</span>,<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-success">"PostgreSQL"</span>, <span class="text-success">"Selenium"</span><br>
-                    &nbsp;&nbsp;]<br><br>
-                    &nbsp;&nbsp;<span class="text-primary">def</span> <span class="text-warning">solve</span>(self, problem):<br>
-                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-primary">return</span> <span class="text-success">"solución elegante"</span> <span class="text-muted">✓</span>
+                    &nbsp;&nbsp;name &nbsp;= <span class="text-success">"Kevin Brian Ibarra"</span><br>
+                    &nbsp;&nbsp;role &nbsp;= <span class="text-success">"Backend & Automation"</span><br>
+                    &nbsp;&nbsp;stack = [<span class="text-success">"Python"</span>, <span class="text-success">"Django"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-success">"PostgreSQL"</span>, <span class="text-success">"Selenium"</span>]<br><br>
+                    &nbsp;&nbsp;<span class="text-primary">def</span> <span class="text-warning">solve</span>(self, problema):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-primary">return</span> <span class="text-success">"solución eficiente"</span> <span class="text-success">✓</span>
                 </div>
             </div>
+
         </div>
     </div>
 </section>
 
 <!-- Sobre mí -->
-<section class="py-5 bg-dark-subtle" id="sobre-mi">
-    <div class="container py-4">
-        <h2 class="section-title text-white mb-5">Sobre <span class="text-primary">mí</span></h2>
+<section class="py-5" id="sobre-mi" style="background: var(--bg-section); border-top: 1px solid var(--border);">
+    <div class="container py-3">
+        <h2 class="section-title mb-1">Sobre <span class="text-primary">mí</span></h2>
+        <p class="section-subtitle mb-5">Conóceme un poco más</p>
+
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
-                <p class="text-muted fs-5 mb-3">
+                <p class="mb-3" style="color: var(--text-base);">
                     Soy estudiante de Ingeniería en Sistemas Computacionales en el
-                    <strong class="text-white">Instituto Tecnológico Superior de Huetamo</strong>,
+                    <strong style="color: #e6edf3;">Instituto Tecnológico Superior de Huetamo</strong>,
                     con experiencia real en proyectos de impacto institucional.
                 </p>
-                <p class="text-muted mb-3">
+                <p class="mb-3" style="color: var(--text-muted); font-size: 0.9rem;">
                     Me especializo en automatizar procesos repetitivos con Python y en construir
-                    plataformas web robustas con Django. Mi proyecto más reciente redujo horas
-                    de trabajo manual a minutos procesando 10-15 registros por minuto.
+                    plataformas web robustas con Django. Mi proyecto más reciente redujo horas de
+                    trabajo manual a minutos, procesando 10–15 registros por minuto.
                 </p>
-                <p class="text-muted">
-                    Disponibilidad total · Vehículo propio · Inglés B1 · Huetamo, Michoacán
+                <p style="color: var(--text-muted); font-size: 0.85rem;">
+                    <i class="bi bi-geo-alt text-primary me-1"></i> Huetamo, Michoacán &nbsp;·&nbsp;
+                    <i class="bi bi-translate text-primary me-1"></i> Inglés B1 &nbsp;·&nbsp;
+                    <i class="bi bi-car-front text-primary me-1"></i> Vehículo propio
                 </p>
             </div>
             <div class="col-lg-6">
                 <div class="row g-3">
                     <div class="col-6">
-                        <div class="stat-card text-center p-3 rounded-3">
-                            <div class="display-6 fw-bold text-primary">2+</div>
-                            <small class="text-muted">Proyectos de impacto real</small>
+                        <div class="stat-card p-3 rounded-3 text-center">
+                            <div class="stat-number">2+</div>
+                            <div class="stat-label">Proyectos de impacto real</div>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="stat-card text-center p-3 rounded-3">
-                            <div class="display-6 fw-bold text-primary">10x</div>
-                            <small class="text-muted">Velocidad vs. proceso manual</small>
+                        <div class="stat-card p-3 rounded-3 text-center">
+                            <div class="stat-number">10x</div>
+                            <div class="stat-label">Más rápido que el proceso manual</div>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="stat-card text-center p-3 rounded-3">
-                            <div class="display-6 fw-bold text-primary">6+</div>
-                            <small class="text-muted">Tecnologías dominadas</small>
+                        <div class="stat-card p-3 rounded-3 text-center">
+                            <div class="stat-number">6+</div>
+                            <div class="stat-label">Tecnologías dominadas</div>
                         </div>
                     </div>
                     <div class="col-6">
-                        <div class="stat-card text-center p-3 rounded-3">
-                            <div class="display-6 fw-bold text-primary">100%</div>
-                            <small class="text-muted">Disponibilidad</small>
+                        <div class="stat-card p-3 rounded-3 text-center">
+                            <div class="stat-number">100%</div>
+                            <div class="stat-label">Disponibilidad</div>
                         </div>
                     </div>
                 </div>
@@ -102,32 +119,35 @@
 </section>
 
 <!-- Habilidades -->
-<section class="py-5" id="habilidades">
-    <div class="container py-4">
-        <h2 class="section-title text-white mb-5">Habilidades <span class="text-primary">técnicas</span></h2>
-        <div class="row g-4">
+<section class="py-5" id="habilidades" style="border-top: 1px solid var(--border);">
+    <div class="container py-3">
+        <h2 class="section-title mb-1">Habilidades <span class="text-primary">técnicas</span></h2>
+        <p class="section-subtitle mb-5">Las herramientas con las que construyo</p>
+        <div class="row g-3">
             {% for categoria, skills in habilidades_por_categoria.items %}
             <div class="col-lg-6">
-                <div class="skill-card p-4 rounded-3">
-                    <h5 class="text-primary mb-3"><i class="bi bi-code-slash me-2"></i>{{ categoria }}</h5>
+                <div class="skill-card p-4 rounded-3 h-100">
+                    <h6 class="text-primary mb-3" style="font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;">
+                        <i class="bi bi-code-slash me-1"></i>{{ categoria }}
+                    </h6>
                     {% for skill in skills %}
                     <div class="mb-3">
                         <div class="d-flex justify-content-between mb-1">
-                            <span class="text-white small fw-medium">{{ skill.nombre }}</span>
-                            <span class="text-muted small">{{ skill.nivel }}%</span>
+                            <span class="skill-name">{{ skill.nombre }}</span>
+                            <span class="skill-pct">{{ skill.nivel }}%</span>
                         </div>
-                        <div class="progress" style="height: 6px;">
-                            <div class="progress-bar bg-primary" style="width: {{ skill.nivel }}%"></div>
+                        <div class="progress" style="height: 5px;">
+                            <div class="progress-bar bg-primary" style="width: {{ skill.nivel }}%; border-radius: 4px;"></div>
                         </div>
                     </div>
                     {% empty %}
-                    <p class="text-muted small">Sin habilidades registradas.</p>
+                    <p class="section-subtitle small">Agrega habilidades desde el <a href="/admin/" class="text-primary">panel admin</a>.</p>
                     {% endfor %}
                 </div>
             </div>
             {% empty %}
-            <div class="col-12 text-center text-muted">
-                <p>Agrega habilidades desde el <a href="/admin/" class="text-primary">panel de admin</a>.</p>
+            <div class="col-12 text-center py-4">
+                <p class="section-subtitle">Agrega habilidades desde el <a href="/admin/" class="text-primary">panel admin</a>.</p>
             </div>
             {% endfor %}
         </div>
@@ -136,29 +156,30 @@
 
 <!-- Proyectos destacados -->
 {% if proyectos %}
-<section class="py-5 bg-dark-subtle">
-    <div class="container py-4">
-        <h2 class="section-title text-white mb-5">Proyectos <span class="text-primary">destacados</span></h2>
-        <div class="row g-4">
+<section class="py-5" style="background: var(--bg-section); border-top: 1px solid var(--border);">
+    <div class="container py-3">
+        <h2 class="section-title mb-1">Proyectos <span class="text-primary">destacados</span></h2>
+        <p class="section-subtitle mb-5">Lo que he construido</p>
+        <div class="row g-3">
             {% for p in proyectos %}
             <div class="col-lg-4">
                 <div class="project-card p-4 rounded-3 h-100 d-flex flex-column">
                     <div class="d-flex justify-content-between align-items-start mb-3">
-                        <i class="bi bi-folder2-open text-primary fs-2"></i>
+                        <i class="bi bi-folder2-open text-primary" style="font-size: 1.4rem;"></i>
                         <div class="d-flex gap-2">
                             {% if p.url_github %}
-                            <a href="{{ p.url_github }}" target="_blank" class="text-muted fs-5"><i class="bi bi-github"></i></a>
+                            <a href="{{ p.url_github }}" target="_blank" class="social-icon" style="font-size: 1rem;"><i class="bi bi-github"></i></a>
                             {% endif %}
                             {% if p.url_demo %}
-                            <a href="{{ p.url_demo }}" target="_blank" class="text-muted fs-5"><i class="bi bi-box-arrow-up-right"></i></a>
+                            <a href="{{ p.url_demo }}" target="_blank" class="social-icon" style="font-size: 1rem;"><i class="bi bi-box-arrow-up-right"></i></a>
                             {% endif %}
                         </div>
                     </div>
-                    <h5 class="text-white fw-semibold mb-2">{{ p.titulo }}</h5>
-                    <p class="text-muted small flex-grow-1">{{ p.descripcion }}</p>
+                    <p class="project-title mb-1">{{ p.titulo }}</p>
+                    <p class="project-desc flex-grow-1">{{ p.descripcion }}</p>
                     <div class="d-flex flex-wrap gap-2 mt-3">
                         {% for tech in p.get_tecnologias_list %}
-                        <span class="badge bg-primary bg-opacity-20 text-primary border border-primary border-opacity-25 rounded-pill px-2">{{ tech }}</span>
+                        <span class="project-tech-badge">{{ tech }}</span>
                         {% endfor %}
                     </div>
                 </div>
@@ -166,7 +187,7 @@
             {% endfor %}
         </div>
         <div class="text-center mt-4">
-            <a href="{% url 'proyectos' %}" class="btn btn-outline-primary rounded-pill px-4">
+            <a href="{% url 'proyectos' %}" class="btn btn-outline-primary rounded-pill px-4 py-2">
                 Ver todos los proyectos <i class="bi bi-arrow-right ms-1"></i>
             </a>
         </div>
@@ -176,11 +197,12 @@
 
 <!-- CTA contacto -->
 <section class="py-5 cta-section">
-    <div class="container text-center py-4">
-        <h2 class="text-white fw-bold mb-3">¿Tienes un proyecto en mente?</h2>
-        <p class="text-muted fs-5 mb-4">Estoy disponible para residencia profesional y proyectos freelance.</p>
-        <a href="{% url 'contacto' %}" class="btn btn-primary btn-lg rounded-pill px-5">
-            Hablemos <i class="bi bi-chat-dots ms-2"></i>
+    <div class="container text-center py-3">
+        <p class="hero-greeting mb-2">¿Tienes un proyecto?</p>
+        <h2 class="cta-title mb-2">Hablemos y hagámoslo realidad</h2>
+        <p class="section-subtitle mb-4">Disponible para residencia profesional y proyectos freelance.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-primary rounded-pill px-5 py-2">
+            Envíame un mensaje <i class="bi bi-chat-dots ms-2"></i>
         </a>
     </div>
 </section>
