@@ -1,0 +1,45 @@
+{% extends 'core/base.html' %}
+{% block title %}Proyectos — Kevin Ibarra{% endblock %}
+
+{% block content %}
+<section class="py-5 mt-5">
+    <div class="container py-4">
+        <h1 class="section-title text-white mb-2">Mis <span class="text-primary">proyectos</span></h1>
+        <p class="text-muted mb-5">Soluciones reales que construí desde cero.</p>
+
+        <div class="row g-4">
+            {% for p in proyectos %}
+            <div class="col-lg-6">
+                <div class="project-card p-4 rounded-3 h-100 d-flex flex-column">
+                    {% if p.imagen %}
+                    <img src="{{ p.imagen.url }}" alt="{{ p.titulo }}" class="rounded-2 mb-3 w-100" style="height:180px;object-fit:cover;">
+                    {% endif %}
+                    <div class="d-flex justify-content-between align-items-start mb-2">
+                        <h5 class="text-white fw-semibold mb-0">{{ p.titulo }}</h5>
+                        <div class="d-flex gap-2">
+                            {% if p.url_github %}
+                            <a href="{{ p.url_github }}" target="_blank" class="text-muted fs-5" title="GitHub"><i class="bi bi-github"></i></a>
+                            {% endif %}
+                            {% if p.url_demo %}
+                            <a href="{{ p.url_demo }}" target="_blank" class="text-muted fs-5" title="Demo"><i class="bi bi-box-arrow-up-right"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <p class="text-muted small flex-grow-1">{{ p.descripcion_larga|default:p.descripcion }}</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        {% for tech in p.get_tecnologias_list %}
+                        <span class="badge bg-primary bg-opacity-20 text-primary border border-primary border-opacity-25 rounded-pill px-2">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center py-5">
+                <i class="bi bi-folder-x text-muted fs-1"></i>
+                <p class="text-muted mt-3">Aún no hay proyectos. Agrégalos desde el <a href="/admin/" class="text-primary">panel admin</a>.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

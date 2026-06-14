@@ -1,0 +1,188 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="hero d-flex align-items-center" id="inicio">
+    <div class="container">
+        <div class="row align-items-center min-vh-100 pt-5">
+            <div class="col-lg-7">
+                <p class="text-primary mb-2 font-monospace">Hola, soy</p>
+                <h1 class="display-3 fw-bold text-white mb-2">Kevin Ibarra</h1>
+                <h2 class="h3 text-light mb-4 fw-light">
+                    Desarrollador <span class="text-primary">Backend</span> &
+                    <span class="text-primary">Automatización</span>
+                </h2>
+                <p class="text-muted fs-5 mb-4" style="max-width: 520px;">
+                    Ingeniero en Sistemas especializado en Python y Django.
+                    Construyo herramientas que ahorran horas de trabajo manual.
+                </p>
+                <div class="d-flex gap-3 flex-wrap">
+                    <a href="{% url 'proyectos' %}" class="btn btn-primary btn-lg px-4 rounded-pill">
+                        Ver proyectos <i class="bi bi-arrow-right ms-1"></i>
+                    </a>
+                    <a href="{% url 'contacto' %}" class="btn btn-outline-light btn-lg px-4 rounded-pill">
+                        Contactar
+                    </a>
+                </div>
+                <div class="d-flex gap-3 mt-4">
+                    <a href="https://github.com/TU_USUARIO" target="_blank" class="text-muted fs-4"><i class="bi bi-github"></i></a>
+                    <a href="mailto:kevinbrianip498@gmail.com" class="text-muted fs-4"><i class="bi bi-envelope"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-5 text-center d-none d-lg-block">
+                <div class="hero-code p-4 rounded-3 text-start font-monospace">
+                    <span class="text-muted"># kevin_ibarra.py</span><br><br>
+                    <span class="text-primary">class</span> <span class="text-warning">Developer</span>:<br>
+                    &nbsp;&nbsp;name = <span class="text-success">"Kevin Ibarra"</span><br>
+                    &nbsp;&nbsp;role = <span class="text-success">"Backend & Automation"</span><br>
+                    &nbsp;&nbsp;stack = [<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-success">"Python"</span>, <span class="text-success">"Django"</span>,<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-success">"PostgreSQL"</span>, <span class="text-success">"Selenium"</span><br>
+                    &nbsp;&nbsp;]<br><br>
+                    &nbsp;&nbsp;<span class="text-primary">def</span> <span class="text-warning">solve</span>(self, problem):<br>
+                    &nbsp;&nbsp;&nbsp;&nbsp;<span class="text-primary">return</span> <span class="text-success">"solución elegante"</span> <span class="text-muted">✓</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Sobre mí -->
+<section class="py-5 bg-dark-subtle" id="sobre-mi">
+    <div class="container py-4">
+        <h2 class="section-title text-white mb-5">Sobre <span class="text-primary">mí</span></h2>
+        <div class="row g-4 align-items-center">
+            <div class="col-lg-6">
+                <p class="text-muted fs-5 mb-3">
+                    Soy estudiante de Ingeniería en Sistemas Computacionales en el
+                    <strong class="text-white">Instituto Tecnológico Superior de Huetamo</strong>,
+                    con experiencia real en proyectos de impacto institucional.
+                </p>
+                <p class="text-muted mb-3">
+                    Me especializo en automatizar procesos repetitivos con Python y en construir
+                    plataformas web robustas con Django. Mi proyecto más reciente redujo horas
+                    de trabajo manual a minutos procesando 10-15 registros por minuto.
+                </p>
+                <p class="text-muted">
+                    Disponibilidad total · Vehículo propio · Inglés B1 · Huetamo, Michoacán
+                </p>
+            </div>
+            <div class="col-lg-6">
+                <div class="row g-3">
+                    <div class="col-6">
+                        <div class="stat-card text-center p-3 rounded-3">
+                            <div class="display-6 fw-bold text-primary">2+</div>
+                            <small class="text-muted">Proyectos de impacto real</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card text-center p-3 rounded-3">
+                            <div class="display-6 fw-bold text-primary">10x</div>
+                            <small class="text-muted">Velocidad vs. proceso manual</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card text-center p-3 rounded-3">
+                            <div class="display-6 fw-bold text-primary">6+</div>
+                            <small class="text-muted">Tecnologías dominadas</small>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card text-center p-3 rounded-3">
+                            <div class="display-6 fw-bold text-primary">100%</div>
+                            <small class="text-muted">Disponibilidad</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Habilidades -->
+<section class="py-5" id="habilidades">
+    <div class="container py-4">
+        <h2 class="section-title text-white mb-5">Habilidades <span class="text-primary">técnicas</span></h2>
+        <div class="row g-4">
+            {% for categoria, skills in habilidades_por_categoria.items %}
+            <div class="col-lg-6">
+                <div class="skill-card p-4 rounded-3">
+                    <h5 class="text-primary mb-3"><i class="bi bi-code-slash me-2"></i>{{ categoria }}</h5>
+                    {% for skill in skills %}
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-white small fw-medium">{{ skill.nombre }}</span>
+                            <span class="text-muted small">{{ skill.nivel }}%</span>
+                        </div>
+                        <div class="progress" style="height: 6px;">
+                            <div class="progress-bar bg-primary" style="width: {{ skill.nivel }}%"></div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <p class="text-muted small">Sin habilidades registradas.</p>
+                    {% endfor %}
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center text-muted">
+                <p>Agrega habilidades desde el <a href="/admin/" class="text-primary">panel de admin</a>.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Proyectos destacados -->
+{% if proyectos %}
+<section class="py-5 bg-dark-subtle">
+    <div class="container py-4">
+        <h2 class="section-title text-white mb-5">Proyectos <span class="text-primary">destacados</span></h2>
+        <div class="row g-4">
+            {% for p in proyectos %}
+            <div class="col-lg-4">
+                <div class="project-card p-4 rounded-3 h-100 d-flex flex-column">
+                    <div class="d-flex justify-content-between align-items-start mb-3">
+                        <i class="bi bi-folder2-open text-primary fs-2"></i>
+                        <div class="d-flex gap-2">
+                            {% if p.url_github %}
+                            <a href="{{ p.url_github }}" target="_blank" class="text-muted fs-5"><i class="bi bi-github"></i></a>
+                            {% endif %}
+                            {% if p.url_demo %}
+                            <a href="{{ p.url_demo }}" target="_blank" class="text-muted fs-5"><i class="bi bi-box-arrow-up-right"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <h5 class="text-white fw-semibold mb-2">{{ p.titulo }}</h5>
+                    <p class="text-muted small flex-grow-1">{{ p.descripcion }}</p>
+                    <div class="d-flex flex-wrap gap-2 mt-3">
+                        {% for tech in p.get_tecnologias_list %}
+                        <span class="badge bg-primary bg-opacity-20 text-primary border border-primary border-opacity-25 rounded-pill px-2">{{ tech }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'proyectos' %}" class="btn btn-outline-primary rounded-pill px-4">
+                Ver todos los proyectos <i class="bi bi-arrow-right ms-1"></i>
+            </a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- CTA contacto -->
+<section class="py-5 cta-section">
+    <div class="container text-center py-4">
+        <h2 class="text-white fw-bold mb-3">¿Tienes un proyecto en mente?</h2>
+        <p class="text-muted fs-5 mb-4">Estoy disponible para residencia profesional y proyectos freelance.</p>
+        <a href="{% url 'contacto' %}" class="btn btn-primary btn-lg rounded-pill px-5">
+            Hablemos <i class="bi bi-chat-dots ms-2"></i>
+        </a>
+    </div>
+</section>
+
+{% endblock %}

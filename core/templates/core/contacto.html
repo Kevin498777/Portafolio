@@ -1,0 +1,77 @@
+{% extends 'core/base.html' %}
+{% block title %}Contacto — Kevin Ibarra{% endblock %}
+
+{% block content %}
+<section class="py-5 mt-5">
+    <div class="container py-4">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="section-title text-white mb-2">Hablemos <span class="text-primary">📬</span></h1>
+                <p class="text-muted mb-5">Disponible para residencia profesional y proyectos freelance.</p>
+
+                <!-- Info de contacto -->
+                <div class="row g-3 mb-5">
+                    <div class="col-md-4">
+                        <div class="contact-info-card p-3 rounded-3 text-center">
+                            <i class="bi bi-envelope-fill text-primary fs-3 mb-2 d-block"></i>
+                            <small class="text-muted d-block">Email</small>
+                            <a href="mailto:kevinbrianip498@gmail.com" class="text-white small">kevinbrianip498@gmail.com</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-card p-3 rounded-3 text-center">
+                            <i class="bi bi-telephone-fill text-primary fs-3 mb-2 d-block"></i>
+                            <small class="text-muted d-block">Teléfono</small>
+                            <a href="tel:7671216926" class="text-white small">767-121-6926</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-info-card p-3 rounded-3 text-center">
+                            <i class="bi bi-geo-alt-fill text-primary fs-3 mb-2 d-block"></i>
+                            <small class="text-muted d-block">Ubicación</small>
+                            <span class="text-white small">Huetamo, Michoacán</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formulario -->
+                <div class="skill-card p-4 rounded-3">
+                    <form method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Nombre</label>
+                                {{ form.nombre }}
+                                {% if form.nombre.errors %}
+                                <div class="text-danger small mt-1">{{ form.nombre.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-md-6">
+                                <label class="form-label text-muted small">Email</label>
+                                {{ form.email }}
+                                {% if form.email.errors %}
+                                <div class="text-danger small mt-1">{{ form.email.errors.0 }}</div>
+                                {% endif %}
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-muted small">Asunto</label>
+                                {{ form.asunto }}
+                            </div>
+                            <div class="col-12">
+                                <label class="form-label text-muted small">Mensaje</label>
+                                {{ form.mensaje }}
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary rounded-pill px-4">
+                                    Enviar mensaje <i class="bi bi-send ms-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

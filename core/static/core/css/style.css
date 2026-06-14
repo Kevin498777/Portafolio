@@ -1,0 +1,142 @@
+/* =========================================
+   Kevin Ibarra Portfolio — Estilos globales
+   ========================================= */
+
+:root {
+    --primary: #4f8ef7;
+    --bg-dark: #0d1117;
+    --bg-card: #161b22;
+    --bg-card-hover: #1c2128;
+    --border: #30363d;
+    --text-muted: #8b949e;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    background-color: var(--bg-dark);
+    font-family: 'Inter', sans-serif;
+    color: #c9d1d9;
+}
+
+/* --- Navbar --- */
+#navbar {
+    background-color: rgba(13, 17, 23, 0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.3s;
+}
+
+.navbar-brand { font-size: 1.2rem; }
+
+/* --- Hero --- */
+.hero {
+    background: radial-gradient(ellipse at top left, rgba(79,142,247,0.08) 0%, transparent 60%),
+                var(--bg-dark);
+    min-height: 100vh;
+}
+
+.hero-code {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    font-size: 0.85rem;
+    line-height: 1.8;
+}
+
+/* --- Sección titles --- */
+.section-title {
+    font-size: 2rem;
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 12px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 48px;
+    height: 3px;
+    background: var(--primary);
+    border-radius: 2px;
+}
+
+/* --- Cards --- */
+.skill-card,
+.project-card,
+.contact-info-card,
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: border-color 0.2s, transform 0.2s;
+}
+
+.skill-card:hover,
+.project-card:hover,
+.contact-info-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-2px);
+}
+
+/* --- Progress bars --- */
+.progress {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+/* --- CTA section --- */
+.cta-section {
+    background: linear-gradient(135deg, rgba(79,142,247,0.08) 0%, transparent 100%);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+/* --- Footer --- */
+.footer {
+    background: var(--bg-card);
+    border-top: 1px solid var(--border);
+}
+
+/* --- Forms --- */
+.form-control {
+    background: var(--bg-dark) !important;
+    border: 1px solid var(--border) !important;
+    color: #c9d1d9 !important;
+    border-radius: 8px;
+}
+
+.form-control:focus {
+    border-color: var(--primary) !important;
+    box-shadow: 0 0 0 3px rgba(79,142,247,0.15) !important;
+}
+
+.form-control::placeholder { color: var(--text-muted); }
+
+/* --- Badges --- */
+.badge { font-weight: 500; }
+
+/* --- bg-dark-subtle override --- */
+.bg-dark-subtle { background-color: #0d1117 !important; }
+
+/* --- Botones --- */
+.btn-primary {
+    background: var(--primary);
+    border-color: var(--primary);
+}
+
+.btn-primary:hover {
+    background: #3a78e8;
+    border-color: #3a78e8;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .hero { padding-top: 80px; }
+    .section-title { font-size: 1.5rem; }
+}
