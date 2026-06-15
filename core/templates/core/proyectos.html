@@ -26,7 +26,7 @@
         <!-- Grid de proyectos -->
         <div class="row g-4" id="proyecto-grid">
             {% for p in proyectos %}
-            <div class="col-lg-6 proyecto-item" data-techs="{{ p.tecnologias }}">
+            <div class="col-lg-4 col-md-6 proyecto-item" data-techs="{{ p.tecnologias }}">
                 <div class="project-card-full rounded-3 h-100 d-flex flex-column overflow-hidden">
 
                     <!-- Imagen / header de card -->
@@ -47,11 +47,11 @@
                     {% endif %}
 
                     <!-- Contenido -->
-                    <div class="p-4 d-flex flex-column flex-grow-1">
+                    <div class="p-3 d-flex flex-column flex-grow-1">
 
                         <!-- Título + iconos -->
                         <div class="d-flex justify-content-between align-items-start mb-2">
-                            <h5 class="project-title mb-0">{{ p.titulo }}</h5>
+                            <h5 class="project-title mb-0" style="font-size:0.92rem;">{{ p.titulo }}</h5>
                             <div class="d-flex gap-2 ms-2 flex-shrink-0">
                                 {% if p.url_github %}
                                 <a href="{{ p.url_github }}" target="_blank" class="social-icon" style="font-size:1.1rem;" title="Ver en GitHub"><i class="bi bi-github"></i></a>
@@ -95,7 +95,7 @@
                             {% if p.url_demo %}
                             <a href="{{ p.url_demo }}" target="_blank"
                                class="btn btn-primary btn-sm rounded-pill px-3">
-                                <i class="bi bi-play-circle me-1"></i>Demo en vivo
+                                <i class="bi bi-globe me-1"></i>Sitio web
                             </a>
                             {% endif %}
                             {% if p.url_github %}
@@ -166,21 +166,30 @@
 /* --- Imagen de card --- */
 .project-img-wrapper {
     position: relative;
-    height: 200px;
+    height: 160px;
     overflow: hidden;
+}
+.project-img-wrapper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, transparent 40%, rgba(22,27,34,0.85) 100%);
+    pointer-events: none;
 }
 .project-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.4s ease;
+    transition: transform 0.45s ease;
+    filter: brightness(0.92);
 }
 .project-card-full:hover .project-img {
-    transform: scale(1.04);
+    transform: scale(1.07);
+    filter: brightness(1);
 }
 .project-img-placeholder {
-    height: 120px;
-    background: var(--bg-section);
+    height: 90px;
+    background: linear-gradient(135deg, var(--bg-section) 0%, #1a2030 100%);
     border-bottom: 1px solid var(--border);
     position: relative;
 }
