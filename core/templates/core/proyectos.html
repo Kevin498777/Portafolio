@@ -1,45 +1,251 @@
 {% extends 'core/base.html' %}
-{% block title %}Proyectos — Kevin Ibarra{% endblock %}
+{% load static %}
+{% block title %}Proyectos — Kevin Brian Ibarra Pineda{% endblock %}
 
 {% block content %}
-<section class="py-5 mt-5">
+<section class="py-5 mt-5" id="proyectos">
     <div class="container py-4">
-        <h1 class="section-title text-white mb-2">Mis <span class="text-primary">proyectos</span></h1>
-        <p class="text-muted mb-5">Soluciones reales que construí desde cero.</p>
 
-        <div class="row g-4">
+        <!-- Header -->
+        <h1 class="section-title mb-1">Mis <span class="text-primary">proyectos</span></h1>
+        <p class="section-subtitle mb-5">
+            Soluciones reales que construí — automatización, plataformas web, apps móviles y videojuegos.
+        </p>
+
+        <!-- Filtros -->
+        <div class="d-flex flex-wrap gap-2 mb-5" id="filtros">
+            <button class="filter-btn active" data-filter="todos">Todos</button>
+            <button class="filter-btn" data-filter="Python">Python</button>
+            <button class="filter-btn" data-filter="Django">Django</button>
+            <button class="filter-btn" data-filter="React">React</button>
+            <button class="filter-btn" data-filter="Flutter">Flutter</button>
+            <button class="filter-btn" data-filter="PHP">PHP</button>
+            <button class="filter-btn" data-filter="JavaScript">JavaScript</button>
+        </div>
+
+        <!-- Grid de proyectos -->
+        <div class="row g-4" id="proyecto-grid">
             {% for p in proyectos %}
-            <div class="col-lg-6">
-                <div class="project-card p-4 rounded-3 h-100 d-flex flex-column">
+            <div class="col-lg-6 proyecto-item" data-techs="{{ p.tecnologias }}">
+                <div class="project-card-full rounded-3 h-100 d-flex flex-column overflow-hidden">
+
+                    <!-- Imagen / header de card -->
                     {% if p.imagen %}
-                    <img src="{{ p.imagen.url }}" alt="{{ p.titulo }}" class="rounded-2 mb-3 w-100" style="height:180px;object-fit:cover;">
+                    <div class="project-img-wrapper">
+                        <img src="{{ p.imagen.url }}" alt="{{ p.titulo }}" class="project-img">
+                        {% if p.destacado %}
+                        <span class="badge-destacado"><i class="bi bi-star-fill me-1"></i>Destacado</span>
+                        {% endif %}
+                    </div>
+                    {% else %}
+                    <div class="project-img-placeholder d-flex align-items-center justify-content-center position-relative">
+                        <i class="bi bi-code-slash" style="font-size:3rem; color: var(--border-light);"></i>
+                        {% if p.destacado %}
+                        <span class="badge-destacado"><i class="bi bi-star-fill me-1"></i>Destacado</span>
+                        {% endif %}
+                    </div>
                     {% endif %}
-                    <div class="d-flex justify-content-between align-items-start mb-2">
-                        <h5 class="text-white fw-semibold mb-0">{{ p.titulo }}</h5>
-                        <div class="d-flex gap-2">
-                            {% if p.url_github %}
-                            <a href="{{ p.url_github }}" target="_blank" class="text-muted fs-5" title="GitHub"><i class="bi bi-github"></i></a>
-                            {% endif %}
+
+                    <!-- Contenido -->
+                    <div class="p-4 d-flex flex-column flex-grow-1">
+
+                        <!-- Título + iconos -->
+                        <div class="d-flex justify-content-between align-items-start mb-2">
+                            <h5 class="project-title mb-0">{{ p.titulo }}</h5>
+                            <div class="d-flex gap-2 ms-2 flex-shrink-0">
+                                {% if p.url_github %}
+                                <a href="{{ p.url_github }}" target="_blank" class="social-icon" style="font-size:1.1rem;" title="Ver en GitHub"><i class="bi bi-github"></i></a>
+                                {% endif %}
+                                {% if p.url_demo %}
+                                <a href="{{ p.url_demo }}" target="_blank" class="social-icon" style="font-size:1.1rem;" title="Ver demo"><i class="bi bi-box-arrow-up-right"></i></a>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <!-- Descripción corta -->
+                        <p class="project-desc mb-2">{{ p.descripcion }}</p>
+
+                        <!-- Descripción larga colapsable -->
+                        {% if p.descripcion_larga %}
+                        <div class="collapse mb-3" id="desc-{{ p.pk }}">
+                            <p class="project-desc" style="font-size:0.82rem; border-left: 2px solid var(--border); padding-left: 12px;">
+                                {{ p.descripcion_larga }}
+                            </p>
+                        </div>
+                        <button class="btn-ver-mas mb-3" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#desc-{{ p.pk }}" aria-expanded="false"
+                                onclick="this.textContent = this.getAttribute('aria-expanded') === 'true' ? '▸ Ver más' : '▾ Ver menos'">
+                            ▸ Ver más
+                        </button>
+                        {% endif %}
+
+                        <!-- Spacer -->
+                        <div class="flex-grow-1"></div>
+
+                        <!-- Tecnologías -->
+                        <div class="d-flex flex-wrap gap-2 mt-2">
+                            {% for tech in p.get_tecnologias_list %}
+                            <span class="project-tech-badge">{{ tech }}</span>
+                            {% endfor %}
+                        </div>
+
+                        <!-- Botones de acción -->
+                        {% if p.url_demo or p.url_github %}
+                        <div class="d-flex gap-2 mt-3">
                             {% if p.url_demo %}
-                            <a href="{{ p.url_demo }}" target="_blank" class="text-muted fs-5" title="Demo"><i class="bi bi-box-arrow-up-right"></i></a>
+                            <a href="{{ p.url_demo }}" target="_blank"
+                               class="btn btn-primary btn-sm rounded-pill px-3">
+                                <i class="bi bi-play-circle me-1"></i>Demo en vivo
+                            </a>
+                            {% endif %}
+                            {% if p.url_github %}
+                            <a href="{{ p.url_github }}" target="_blank"
+                               class="btn btn-outline-light btn-sm rounded-pill px-3">
+                                <i class="bi bi-github me-1"></i>Código
+                            </a>
                             {% endif %}
                         </div>
-                    </div>
-                    <p class="text-muted small flex-grow-1">{{ p.descripcion_larga|default:p.descripcion }}</p>
-                    <div class="d-flex flex-wrap gap-2 mt-3">
-                        {% for tech in p.get_tecnologias_list %}
-                        <span class="badge bg-primary bg-opacity-20 text-primary border border-primary border-opacity-25 rounded-pill px-2">{{ tech }}</span>
-                        {% endfor %}
+                        {% endif %}
+
                     </div>
                 </div>
             </div>
             {% empty %}
             <div class="col-12 text-center py-5">
-                <i class="bi bi-folder-x text-muted fs-1"></i>
-                <p class="text-muted mt-3">Aún no hay proyectos. Agrégalos desde el <a href="/admin/" class="text-primary">panel admin</a>.</p>
+                <i class="bi bi-folder-x text-muted" style="font-size:3rem;"></i>
+                <p class="section-subtitle mt-3">
+                    Aún no hay proyectos. Agrégalos desde el
+                    <a href="/admin/" class="text-primary">panel admin</a>.
+                </p>
             </div>
             {% endfor %}
         </div>
+
+        <!-- Mensaje sin resultados del filtro -->
+        <div id="sin-resultados" class="text-center py-5 d-none">
+            <i class="bi bi-search text-muted" style="font-size:2rem;"></i>
+            <p class="section-subtitle mt-3">No hay proyectos con esa tecnología.</p>
+        </div>
+
     </div>
 </section>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+/* --- Filtros --- */
+.filter-btn {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    padding: 5px 14px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.filter-btn:hover,
+.filter-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+}
+
+/* --- Card completa --- */
+.project-card-full {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.project-card-full:hover {
+    border-color: var(--primary);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(79,142,247,0.12);
+}
+
+/* --- Imagen de card --- */
+.project-img-wrapper {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+}
+.project-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+.project-card-full:hover .project-img {
+    transform: scale(1.04);
+}
+.project-img-placeholder {
+    height: 120px;
+    background: var(--bg-section);
+    border-bottom: 1px solid var(--border);
+    position: relative;
+}
+
+/* --- Badge destacado --- */
+.badge-destacado {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(79,142,247,0.88);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: 0.3px;
+    backdrop-filter: blur(4px);
+}
+
+/* --- Ver más --- */
+.btn-ver-mas {
+    background: none;
+    border: none;
+    color: var(--primary);
+    font-size: 0.78rem;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Fira Code', monospace;
+}
+.btn-ver-mas:hover { text-decoration: underline; }
+
+/* --- Fade out para items filtrados --- */
+.proyecto-item { transition: opacity 0.2s, transform 0.2s; }
+.proyecto-item.oculto { opacity: 0; pointer-events: none; height: 0; overflow: hidden; padding: 0 !important; margin: 0 !important; }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const btns = document.querySelectorAll('.filter-btn');
+    const items = document.querySelectorAll('.proyecto-item');
+    const sinResultados = document.getElementById('sin-resultados');
+
+    btns.forEach(btn => {
+        btn.addEventListener('click', function () {
+            btns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+
+            const filtro = this.dataset.filter;
+            let visibles = 0;
+
+            items.forEach(item => {
+                const techs = item.dataset.techs || '';
+                if (filtro === 'todos' || techs.toLowerCase().includes(filtro.toLowerCase())) {
+                    item.classList.remove('oculto');
+                    visibles++;
+                } else {
+                    item.classList.add('oculto');
+                }
+            });
+
+            sinResultados.classList.toggle('d-none', visibles > 0);
+        });
+    });
+});
+</script>
 {% endblock %}
