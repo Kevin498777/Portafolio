@@ -123,34 +123,42 @@
     <div class="container py-3">
         <h2 class="section-title mb-1">Habilidades <span class="text-primary">técnicas</span></h2>
         <p class="section-subtitle mb-5">Las herramientas con las que construyo</p>
-        <div class="row g-3">
+
+        {% if habilidades_por_categoria %}
+        <div class="skills-grid">
             {% for categoria, skills in habilidades_por_categoria.items %}
-            <div class="col-lg-6">
-                <div class="skill-card p-4 rounded-3 h-100">
-                    <h6 class="text-primary mb-3" style="font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; font-weight: 600;">
-                        <i class="bi bi-code-slash me-1"></i>{{ categoria }}
-                    </h6>
+            <div class="skill-group">
+                <div class="skill-group-header">
+                    {% if categoria == "Lenguajes" %}
+                        <i class="bi bi-file-code"></i>
+                    {% elif categoria == "Frameworks" %}
+                        <i class="bi bi-layers"></i>
+                    {% elif categoria == "Bases de Datos" %}
+                        <i class="bi bi-database"></i>
+                    {% elif categoria == "Automatizacion" %}
+                        <i class="bi bi-robot"></i>
+                    {% else %}
+                        <i class="bi bi-tools"></i>
+                    {% endif %}
+                    <span>{{ categoria }}</span>
+                </div>
+                <div class="skill-list">
                     {% for skill in skills %}
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span class="skill-name">{{ skill.nombre }}</span>
-                            <span class="skill-pct">{{ skill.nivel }}%</span>
-                        </div>
-                        <div class="progress" style="height: 5px;">
-                            <div class="progress-bar bg-primary" style="width: {{ skill.nivel }}%; border-radius: 4px;"></div>
-                        </div>
+                    <div class="skill-row">
+                        <span class="skill-row-name">{{ skill.nombre }}</span>
+                        <span class="skill-row-pct">{{ skill.nivel }}%</span>
                     </div>
-                    {% empty %}
-                    <p class="section-subtitle small">Agrega habilidades desde el <a href="/admin/" class="text-primary">panel admin</a>.</p>
                     {% endfor %}
                 </div>
             </div>
-            {% empty %}
-            <div class="col-12 text-center py-4">
-                <p class="section-subtitle">Agrega habilidades desde el <a href="/admin/" class="text-primary">panel admin</a>.</p>
-            </div>
             {% endfor %}
         </div>
+        {% else %}
+        <div class="text-center py-4">
+            <p class="section-subtitle">Agrega habilidades desde el <a href="/admin/" class="text-primary">panel admin</a>.</p>
+        </div>
+        {% endif %}
+
     </div>
 </section>
 
