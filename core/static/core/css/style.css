@@ -43,6 +43,11 @@ body {
 }
 .nav-link:hover { color: var(--text-base) !important; }
 
+.nav-link.btn-primary,
+.nav-link.btn-primary:hover {
+    color: #fff !important;
+}
+
 /* --- Hero --- */
 .hero {
     background:
@@ -147,6 +152,36 @@ body {
     letter-spacing: 4px;
     margin-bottom: 12px;
 }
+
+/* --- Fondo decorativo reutilizable (rejilla + reflejo de luz) --- */
+.section-deco {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.section-deco::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(79,142,247,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,142,247,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section-deco::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--section-glow);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.section-deco > .container { position: relative; z-index: 1; }
 
 /* --- Sección titles --- */
 .section-title {
@@ -319,6 +354,19 @@ body {
     background: var(--bg-card);
     border-top: 1px solid var(--border);
     font-size: 0.83rem;
+}
+
+.footer .text-muted {
+    color: var(--text-muted) !important;
+}
+
+.footer .social-icon,
+.footer a.text-muted {
+    color: var(--text-base) !important;
+}
+
+.footer a.text-muted:hover {
+    color: var(--primary) !important;
 }
 
 /* --- Forms --- */

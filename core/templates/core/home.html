@@ -29,7 +29,7 @@
                     </a>
                 </div>
                 <div class="d-flex gap-3">
-                    <a href="https://github.com/TU_USUARIO" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
+                    <a href="https://github.com/Kevin498777" target="_blank" class="social-icon"><i class="bi bi-github"></i></a>
                     <a href="mailto:kevinbrianip498@gmail.com" class="social-icon"><i class="bi bi-envelope"></i></a>
                     <a href="tel:7671216926" class="social-icon"><i class="bi bi-telephone"></i></a>
                 </div>
@@ -63,7 +63,7 @@
 </section>
 
 <!-- Sobre mí -->
-<section class="py-5" id="sobre-mi" style="background: var(--bg-section); border-top: 1px solid var(--border);">
+<section class="py-5 section-deco" id="sobre-mi" style="background: var(--bg-section); border-top: 1px solid var(--border); --section-glow: radial-gradient(ellipse 45% 50% at 8% 15%, rgba(79,142,247,0.08) 0%, transparent 70%);">
     <div class="container py-3">
         <h2 class="section-title mb-1">Sobre <span class="text-primary">mí</span></h2>
         <p class="section-subtitle mb-5">Conóceme un poco más</p>
@@ -71,19 +71,18 @@
         <div class="row g-4 align-items-center">
             <div class="col-lg-6">
                 <p class="mb-3" style="color: var(--text-base);">
-                    Soy estudiante de Ingeniería en Sistemas Computacionales en el
+                    Soy estudiante de 8vo semestre de Ingeniería en Sistemas Computacionales en el
                     <strong style="color: #e6edf3;">Instituto Tecnológico Superior de Huetamo</strong>,
-                    con experiencia real en proyectos de impacto institucional.
+                    con promedio de 9.4 y experiencia real en proyectos de impacto institucional.
                 </p>
                 <p class="mb-3" style="color: var(--text-muted); font-size: 0.9rem;">
-                    Me especializo en automatizar procesos repetitivos con Python y en construir
-                    plataformas web robustas con Django. Mi proyecto más reciente redujo horas de
-                    trabajo manual a minutos, procesando 10–15 registros por minuto.
+                    Me especializo en backend con Django y en automatizar procesos repetitivos
+                    con Python. Mi proyecto más reciente redujo horas de trabajo manual a minutos,
+                    procesando 10–15 registros por minuto.
                 </p>
                 <p style="color: var(--text-muted); font-size: 0.85rem;">
                     <i class="bi bi-geo-alt text-primary me-1"></i> Huetamo, Michoacán &nbsp;·&nbsp;
-                    <i class="bi bi-translate text-primary me-1"></i> Inglés B1 &nbsp;·&nbsp;
-                    <i class="bi bi-car-front text-primary me-1"></i> Vehículo propio
+                    <i class="bi bi-translate text-primary me-1"></i> Inglés B1
                 </p>
             </div>
             <div class="col-lg-6">
@@ -96,8 +95,8 @@
                     </div>
                     <div class="col-6">
                         <div class="stat-card p-3 rounded-3 text-center">
-                            <div class="stat-number">10x</div>
-                            <div class="stat-label">Más rápido que el proceso manual</div>
+                            <div class="stat-number">10+</div>
+                            <div class="stat-label">Proyectos finalizados</div>
                         </div>
                     </div>
                     <div class="col-6">
@@ -108,8 +107,20 @@
                     </div>
                     <div class="col-6">
                         <div class="stat-card p-3 rounded-3 text-center">
-                            <div class="stat-number">100%</div>
-                            <div class="stat-label">Disponibilidad</div>
+                            <div class="stat-number">Flexible</div>
+                            <div class="stat-label">Disponibilidad de horario</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card p-3 rounded-3 text-center">
+                            <div class="stat-number">9.4</div>
+                            <div class="stat-label">Promedio general</div>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="stat-card p-3 rounded-3 text-center">
+                            <div class="stat-number">8vo</div>
+                            <div class="stat-label">Semestre actual</div>
                         </div>
                     </div>
                 </div>
@@ -119,7 +130,7 @@
 </section>
 
 <!-- Habilidades -->
-<section class="py-5" id="habilidades" style="border-top: 1px solid var(--border);">
+<section class="py-5 section-deco" id="habilidades" style="border-top: 1px solid var(--border); --section-glow: radial-gradient(ellipse 50% 50% at 92% 80%, rgba(79,142,247,0.07) 0%, transparent 70%);">
     <div class="container py-3">
         <h2 class="section-title mb-1">Habilidades <span class="text-primary">técnicas</span></h2>
         <p class="section-subtitle mb-5">Las herramientas con las que construyo</p>
@@ -164,7 +175,7 @@
 
 <!-- Proyectos destacados -->
 {% if proyectos %}
-<section class="py-5" style="background: var(--bg-section); border-top: 1px solid var(--border);">
+<section class="py-5 section-deco" style="background: var(--bg-section); border-top: 1px solid var(--border); --section-glow: radial-gradient(ellipse 50% 50% at 12% 85%, rgba(79,142,247,0.08) 0%, transparent 70%);">
     <div class="container py-3">
         <h2 class="section-title mb-1">Proyectos <span class="text-primary">destacados</span></h2>
         <p class="section-subtitle mb-5">Lo que he construido</p>
@@ -204,7 +215,7 @@
 {% endif %}
 
 <!-- CTA contacto -->
-<section class="py-5 cta-section">
+<section class="py-5 cta-section section-deco" style="--section-glow: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(79,142,247,0.06) 0%, transparent 70%);">
     <div class="container text-center py-3">
         <p class="hero-greeting mb-2">¿Tienes un proyecto?</p>
         <h2 class="cta-title mb-2">Hablemos y hagámoslo realidad</h2>

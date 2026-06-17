@@ -18,6 +18,28 @@ MEDIA_PROYECTOS = os.path.join(BASE_DIR, "media", "proyectos")
 
 PROYECTOS = [
     {
+        "titulo": "Participación en Investigación — Programa Delfín 2026",
+        "descripcion": (
+            "Estancia de investigación virtual en la Universidad de la Costa (Colombia), "
+            "participando en el desarrollo de un CMMS para mantenimiento de buques de la "
+            "Armada Colombiana."
+        ),
+        "descripcion_larga": (
+            "Estancia de investigación virtual realizada en la Universidad de la Costa "
+            "(Colombia), como parte del Programa Delfín — Verano de la Investigación "
+            "Científica y Tecnológica 2026. Participación en el proyecto \"Desarrollo de un "
+            "CMMS para mantenimiento de buques de la Armada Colombiana\", bajo la asesoría del "
+            "Mg. Edwin Giovanny Paipa Sanabria. Trabajo enfocado en automatización de procesos "
+            "e innovación aplicada al desarrollo de software para gestión de mantenimiento."
+        ),
+        "tecnologias": "Python, Automatización de procesos, Investigación e innovación, Desarrollo de software",
+        "url_github": "",
+        "url_demo": "",
+        "imagen_archivo": None,
+        "destacado": True,
+        "orden": 0,
+    },
+    {
         "titulo": "AMPMAuto — Automatización de Registro de Guías",
         "descripcion": (
             "Aplicación de escritorio que automatiza el registro masivo de guías en el "

@@ -2,7 +2,7 @@ services:
   - type: web
     name: kevin-portfolio
     env: python
-    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate"
+    buildCommand: "pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate && python manage.py load_proyectos && python manage.py load_habilidades"
     startCommand: "gunicorn portfolio.wsgi"
     envVars:
       - key: DEBUG

@@ -12,34 +12,35 @@ from core.models import Habilidad
 HABILIDADES = [
     # --- Lenguajes ---
     {"nombre": "Python",      "categoria": "lenguaje", "nivel": 80, "orden": 1},
-    {"nombre": "JavaScript",  "categoria": "lenguaje", "nivel": 80, "orden": 2},
-    {"nombre": "SQL",         "categoria": "lenguaje", "nivel": 80, "orden": 3},
-    {"nombre": "HTML5",       "categoria": "lenguaje", "nivel": 80, "orden": 4},
-    {"nombre": "CSS3",        "categoria": "lenguaje", "nivel": 80, "orden": 5},
+    {"nombre": "JavaScript",  "categoria": "lenguaje", "nivel": 60, "orden": 2},
+    {"nombre": "SQL",         "categoria": "lenguaje", "nivel": 50, "orden": 3},
+    {"nombre": "HTML5",       "categoria": "lenguaje", "nivel": 40, "orden": 4},
+    {"nombre": "CSS3",        "categoria": "lenguaje", "nivel": 40, "orden": 5},
+    {"nombre": "Java",        "categoria": "lenguaje", "nivel": 30, "orden": 8},
 
     # --- Frameworks ---
     {"nombre": "Django",      "categoria": "framework", "nivel": 80, "orden": 1},
     {"nombre": "Flask",       "categoria": "framework", "nivel": 80, "orden": 2},
-    {"nombre": "FastAPI",     "categoria": "framework", "nivel": 80, "orden": 3},
-    {"nombre": "PyQt5",       "categoria": "framework", "nivel": 80, "orden": 4},
-    {"nombre": "Tkinter",     "categoria": "framework", "nivel": 80, "orden": 5},
+    {"nombre": "FastAPI",     "categoria": "framework", "nivel": 70, "orden": 3},
+    {"nombre": "PyQt5",       "categoria": "framework", "nivel": 50, "orden": 4},
+    {"nombre": "Tkinter",     "categoria": "framework", "nivel": 70, "orden": 5},
 
     # --- Bases de Datos ---
     {"nombre": "PostgreSQL",  "categoria": "bd", "nivel": 80, "orden": 1},
-    {"nombre": "MySQL",       "categoria": "bd", "nivel": 80, "orden": 2},
-    {"nombre": "SQLite",      "categoria": "bd", "nivel": 80, "orden": 3},
+    {"nombre": "MySQL",       "categoria": "bd", "nivel": 60, "orden": 2},
+    {"nombre": "SQLite",      "categoria": "bd", "nivel": 70, "orden": 3},
     {"nombre": "MongoDB",     "categoria": "bd", "nivel": 80, "orden": 4},
 
     # --- Automatización ---
-    {"nombre": "Selenium WebDriver", "categoria": "automatizacion", "nivel": 80, "orden": 1},
+    {"nombre": "Selenium WebDriver", "categoria": "automatizacion", "nivel": 65, "orden": 1},
 
     # --- Herramientas ---
-    {"nombre": "Git y GitHub",       "categoria": "herramienta", "nivel": 80, "orden": 1},
-    {"nombre": "Pandas",             "categoria": "herramienta", "nivel": 80, "orden": 2},
-    {"nombre": "OpenPyXL",           "categoria": "herramienta", "nivel": 80, "orden": 3},
+    {"nombre": "Git y GitHub",       "categoria": "herramienta", "nivel": 70, "orden": 1},
+    {"nombre": "Pandas",             "categoria": "herramienta", "nivel": 35, "orden": 2},
+    {"nombre": "OpenPyXL",           "categoria": "herramienta", "nivel": 40, "orden": 3},
     {"nombre": "Visual Studio Code", "categoria": "herramienta", "nivel": 80, "orden": 4},
-    {"nombre": "PyInstaller",        "categoria": "herramienta", "nivel": 80, "orden": 5},
-    {"nombre": "Inno Setup",         "categoria": "herramienta", "nivel": 80, "orden": 6},
+    {"nombre": "PyInstaller",        "categoria": "herramienta", "nivel": 70, "orden": 5},
+    {"nombre": "Inno Setup",         "categoria": "herramienta", "nivel": 50, "orden": 6},
 ]
 
 
