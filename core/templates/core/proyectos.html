@@ -62,32 +62,28 @@
                             </div>
                         </div>
 
-                        <!-- Descripción corta -->
-                        <p class="project-desc mb-2">{{ p.descripcion }}</p>
-
-                        <!-- Descripción larga colapsable -->
-                        {% if p.descripcion_larga %}
-                        <div class="collapse mb-3" id="desc-{{ p.pk }}">
-                            <p class="project-desc" style="font-size:0.82rem; border-left: 2px solid var(--border); padding-left: 12px;">
+                        <!-- Ver más: descripción + tecnologías -->
+                        <div class="collapse" id="desc-{{ p.pk }}">
+                            <p class="project-desc mb-2">{{ p.descripcion }}</p>
+                            {% if p.descripcion_larga %}
+                            <p class="project-desc mb-2" style="font-size:0.82rem; border-left: 2px solid var(--border); padding-left: 12px;">
                                 {{ p.descripcion_larga }}
                             </p>
+                            {% endif %}
+                            <div class="d-flex flex-wrap gap-2 mb-2">
+                                {% for tech in p.get_tecnologias_list %}
+                                <span class="project-tech-badge">{{ tech }}</span>
+                                {% endfor %}
+                            </div>
                         </div>
                         <button class="btn-ver-mas mb-3" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#desc-{{ p.pk }}" aria-expanded="false"
                                 onclick="this.textContent = this.getAttribute('aria-expanded') === 'true' ? '▸ Ver más' : '▾ Ver menos'">
                             ▸ Ver más
                         </button>
-                        {% endif %}
 
                         <!-- Spacer -->
                         <div class="flex-grow-1"></div>
-
-                        <!-- Tecnologías -->
-                        <div class="d-flex flex-wrap gap-2 mt-2">
-                            {% for tech in p.get_tecnologias_list %}
-                            <span class="project-tech-badge">{{ tech }}</span>
-                            {% endfor %}
-                        </div>
 
                         <!-- Botones de acción -->
                         {% if p.url_demo or p.url_github %}
@@ -163,32 +159,30 @@
     box-shadow: 0 10px 30px rgba(79,142,247,0.12);
 }
 
-/* --- Imagen de card --- */
+/* --- Imagen de card: grande, centrada, sin recorte --- */
 .project-img-wrapper {
     position: relative;
-    height: 160px;
+    height: 260px;
     overflow: hidden;
-}
-.project-img-wrapper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(to bottom, transparent 40%, rgba(22,27,34,0.85) 100%);
-    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-section);
+    border-bottom: 1px solid var(--border);
 }
 .project-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.45s ease;
-    filter: brightness(0.92);
+    object-fit: contain;
+    object-position: center;
+    transition: transform 0.4s ease;
+    padding: 14px;
 }
 .project-card-full:hover .project-img {
-    transform: scale(1.07);
-    filter: brightness(1);
+    transform: scale(1.04);
 }
 .project-img-placeholder {
-    height: 90px;
+    height: 140px;
     background: linear-gradient(135deg, var(--bg-section) 0%, #1a2030 100%);
     border-bottom: 1px solid var(--border);
     position: relative;
