@@ -42,8 +42,11 @@
                     <div class="profile-photo-placeholder">
                         <i class="bi bi-person-fill"></i>
                     </div>
-                    <!-- Cuando tengas tu foto, reemplaza el div de arriba por: -->
-                    <!-- <img src="{% static 'core/img/foto.jpg' %}" alt="Kevin Brian Ibarra Pineda" class="profile-photo"> -->
+                    {% comment %}
+                    Cuando tengas tu foto, agrega el archivo a static/core/img/foto.jpg
+                    y reemplaza el div de arriba por:
+                    <img src="{% static 'core/img/foto.jpg' %}" alt="Kevin Brian Ibarra Pineda" class="profile-photo">
+                    {% endcomment %}
                 </div>
                 <!-- Bloque de código -->
                 <div class="hero-code p-4 text-start font-monospace d-none d-lg-block">
