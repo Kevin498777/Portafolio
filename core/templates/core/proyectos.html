@@ -77,8 +77,7 @@
                             </div>
                         </div>
                         <button class="btn-ver-mas mb-3" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#desc-{{ p.pk }}" aria-expanded="false"
-                                onclick="this.textContent = this.getAttribute('aria-expanded') === 'true' ? '▸ Ver más' : '▾ Ver menos'">
+                                data-bs-target="#desc-{{ p.pk }}" aria-expanded="false">
                             ▸ Ver más
                         </button>
 
@@ -247,6 +246,20 @@ document.addEventListener('DOMContentLoaded', function () {
             });
 
             sinResultados.classList.toggle('d-none', visibles > 0);
+        });
+    });
+
+    // Texto del botón "Ver más / Ver menos": se actualiza con los eventos
+    // reales de Bootstrap (shown/hidden), no con el click, para que nunca
+    // se quede desincronizado del estado real del collapse.
+    document.querySelectorAll('[id^="desc-"]').forEach(function (collapseEl) {
+        const trigger = document.querySelector('[data-bs-target="#' + collapseEl.id + '"]');
+        if (!trigger) return;
+        collapseEl.addEventListener('shown.bs.collapse', function () {
+            trigger.textContent = '▾ Ver menos';
+        });
+        collapseEl.addEventListener('hidden.bs.collapse', function () {
+            trigger.textContent = '▸ Ver más';
         });
     });
 });

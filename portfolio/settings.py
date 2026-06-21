@@ -89,6 +89,22 @@ MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+# Correo: notificación cuando alguien usa el formulario de contacto.
+# Si no se configuran las variables de entorno, se usa el backend de
+# consola (no falla, solo imprime el correo en los logs).
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
+
+if EMAIL_HOST_USER and EMAIL_HOST_PASSWORD:
+    EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+    EMAIL_HOST = config("EMAIL_HOST", default="smtp.gmail.com")
+    EMAIL_PORT = config("EMAIL_PORT", default=587, cast=int)
+    EMAIL_USE_TLS = True
+else:
+    EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+
+CONTACTO_EMAIL_DESTINO = config("CONTACTO_EMAIL_DESTINO", default="kevinbrianip498@gmail.com")
+
 # Para que los errores 500 se vean en los logs de Render/Railway aunque
 # DEBUG=False (por defecto Django solo intenta enviarlos por correo).
 LOGGING = {

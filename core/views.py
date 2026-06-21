@@ -1,3 +1,5 @@
+from django.conf import settings
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Proyecto, Habilidad, Mensaje
@@ -33,7 +35,23 @@ def contacto(request):
     if request.method == "POST":
         form = ContactoForm(request.POST)
         if form.is_valid():
-            form.save()
+            mensaje = form.save()
+            try:
+                send_mail(
+                    subject=f"Portafolio — Nuevo mensaje: {mensaje.asunto}",
+                    message=(
+                        f"Nombre: {mensaje.nombre}\n"
+                        f"Email: {mensaje.email}\n\n"
+                        f"{mensaje.mensaje}"
+                    ),
+                    from_email=settings.EMAIL_HOST_USER or "no-reply@portafolio.local",
+                    recipient_list=[settings.CONTACTO_EMAIL_DESTINO],
+                    fail_silently=True,
+                )
+            except Exception:
+                # Si el correo falla, el mensaje ya quedó guardado en la BD;
+                # no rompemos la experiencia del visitante por esto.
+                pass
             messages.success(request, "Mensaje enviado. Te respondo pronto.")
             return redirect("contacto")
     else:
